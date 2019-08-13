@@ -20,13 +20,12 @@
         "illuminate/database": "^5.8",
         "filp/whoops": "^2.4",
         "swiftmailer/swiftmailer": "^6.0",
-        "monolog/monolog": "^1.24",
-        "middlewares/whoops": "^1.2"
+        "monolog/monolog": "^1.24"
     },
     "autoload": {
         "psr-4": {
             "Core\\": "core/app",
-            "App\\": "app/",
+            "App\\": "app/"
         }
     },
     "require-dev": {

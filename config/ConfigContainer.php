@@ -47,7 +47,7 @@ return [
         'host'     => "host",
         'user'     => "user",
         'pass'     => "password",
-        'port'     => "port",
+        'port'     => 587,
         'protocol' => 'tls',
     ],
     'views_path'                                         => dirname(__DIR__) . '/resources/views/',

@@ -1,3 +1,4 @@
+core/app/session/storage/__blaze_session*
 composer.lock
 vendor
 node_modules

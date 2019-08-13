@@ -63,9 +63,8 @@ class LoginController
             $this->flash->error($this->validar->valid());
             return new RedirectResponse('/acceso/login');
         } else {
-
             $validacion = Usuarios::login($data);
-
+        
             if (null !== $validacion) {
                 $this->log->Looguer(
                     'INFO',
@@ -81,6 +80,7 @@ class LoginController
                 $this->flash->error('Credenciales incorrectas');
                 return new RedirectResponse('/acceso/login');
             }
+            
         }
     }
 }

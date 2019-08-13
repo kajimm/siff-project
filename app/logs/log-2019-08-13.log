@@ -1,0 +1,3 @@
+[2019-08-13 12:13:07] Session.INFO: Session iniciada {"usuario":"admin"} []
+[2019-08-13 12:13:10] sessiones.NOTICE: Session finalizada:: METODO:: {POST}{ URL:: http://localhost:8080/acceso/logout}{ PROTOCOLO:: 1.1 } {"Usuario":"admin"} []
+[2019-08-13 13:49:08] Session.INFO: Session iniciada {"usuario":"admin"} []
