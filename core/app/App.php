@@ -148,7 +148,7 @@ class App
     {
         if ($this->container === null) {
             $builder = new ContainerBuilder();
-            $env     = $_ENV['ENV'] ?? "production";
+            $env     = getenv('ENV') ?? "production";
 
             //se debe modificar la condicional
             if ($env !== 'dev') {

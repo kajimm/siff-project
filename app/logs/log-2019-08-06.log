@@ -1,4 +1,0 @@
-[2019-08-06 15:26:55] sessiones.INFO: Session iniciada {"usuario":"admin"} []
-[2019-08-06 19:01:28] Email.INFO: E-mail enviado ID:: 93ec5488a92d83ef632fb2c77992f774@localhost Fecha:: {"date":"2019-08-06 19:01:26.329041","timezone_type":3,"timezone":"America\/Bogota"} From:: {"team.dev.sif@gmail.com":"blaze framework"} To:: {"zeihtam.frm@gmail.com":"leo"} subject:: "Probando el log" {"Usuarios":"{\"team.dev.sif@gmail.com\":\"blaze framework\"}"} []
-[2019-08-06 19:03:17] sessiones.INFO: Session iniciada {"usuario":"admin"} []
-[2019-08-06 20:04:06] sessiones.INFO: Session iniciada {"usuario":"admin"} []
