@@ -1,0 +1,104 @@
+{% extends 'layout/layout.twig' %}
+
+
+{% block title %}
+    {{ 'Home::index' }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="columns">
+        <div class="column is-3">
+            <aside class="menu is-hidden-mobile">
+                <p class="menu-label">
+                    Administración
+                </p>
+                <ul class="menu-list">
+                    <li>
+                        <a href="{{ router('usuarios') }}">
+                            Usuarios
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Roles
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Permisos
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Configuracion
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Probar
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="column is-9">
+            <br>
+            {{ flash('success') }}
+            <section class="info-tiles">
+                <div class="tile is-ancestor has-text-centered">
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <p class="title">
+                                {{ count }}
+                            </p>
+                            <p class="subtitle">
+                                Usuarios
+                            </p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <p class="title">
+                                59k
+                            </p>
+                            <p class="subtitle">
+                                Products
+                            </p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <p class="title">
+                                3.4k
+                            </p>
+                            <p class="subtitle">
+                                Open Orders
+                            </p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <p class="title">
+                                19
+                            </p>
+                            <p class="subtitle">
+                                Exceptions
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <div class="columns">
+                <div class="column is-6">
+                    <tarea></tarea>
+                </div>
+                <div class="column is-6">
+                    <list></list>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

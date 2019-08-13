@@ -1,0 +1,52 @@
+{% extends 'ingreso/acceso.twig' %}
+
+{% block title %}
+  {{ 'Login::Page' }}
+{% endblock %}
+{% block colorBody %}
+    {{ "bg-gray-900" }}
+{% endblock %}
+{% block body %}
+<section class="hero">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-grey">
+                    Bienvenido (a)
+                </h3>
+                <p class="subtitle has-text-grey">
+                    Si olvidaste tu contraseña ingresa tu correo electronico y solicita la recuperación.
+                </p>
+                <div class="box">
+                    <form action="{{ router('recover') }}" autocomplete="off" method="POST">
+                        {{ csrf() }}
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" name="email" placeholder="Tu correo" type="email">
+                                </input>
+                            </div>
+                        </div>
+                        <button class="button is-primary is-block is-fullwidth" type="submit">
+                            Solicitar
+                        </button>
+                        <br>
+                            <a href="{{ router('login') }}">
+                                Iniciar sesión
+                            </a>
+                            |
+                            <a href="{{ router('registro') }}">
+                                Registrarme
+                            </a>
+                        </br>
+                    </form>
+                    {{ flash('error') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

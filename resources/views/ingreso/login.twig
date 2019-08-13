@@ -1,0 +1,66 @@
+{% extends 'ingreso/acceso.twig' %}
+
+{% block title %}
+  {{ 'Login::Page' }}
+{% endblock %}
+
+{% block style %}
+    <link href="{{ assets('css/checkboxes-bulma.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">
+                        Bienvenido (a)
+                    </h3>
+                    <p class="subtitle has-text-grey">
+                        Iniciar sesión.
+                    </p>
+                    <div class="box">
+                        <form action="{{ router('iniciar') }}" autocomplete="off" method="POST">
+                            <div class="field">
+                                <div class="control">
+                                    <input autofocus="" class="input" name="username" placeholder="Tu correo" type="email" value="admin@root.com">
+                                    </input>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" name="password" placeholder="Tu contraseña" type="password" value="123456789">
+                                    </input>
+                                </div>
+                            </div>
+                        <div class="field has-text-left">
+                            <p class="control">
+                                <div class="b-checkbox is-primary">
+                                    <input id="checkbox" name="remenber" class="styled" checked type="checkbox">
+                                    <label for="checkbox">
+                                        Recordar sesión
+                                    </label>
+                                </div>
+                            </p>
+                        </div>
+                            {{ csrf() }}
+                            <button class="button is-block is-primary is-fullwidth" type="submit">
+                                Iniciar
+                            </button>
+                        </form>
+                    </div>
+                    {{ flash('error') }}
+                    {{ flash('success') }}
+                    <p class="has-text-grey">
+                        <a class="is-pulled-left" href="{{ router('registro') }}">
+                            Registrarme
+                        </a>
+                        <a class="is-pulled-right" href="{{ router('lossPass') }}">
+                            Olvide mi contraseña
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
