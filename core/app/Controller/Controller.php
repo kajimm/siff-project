@@ -16,11 +16,9 @@ use Core\Middleware\Middleware;
  */
 class Controller
 {
-    public function response(string $mensaje, int $status) : ResponseInterface
+    public function response(string $mensaje, int $status, array $header = []) : ResponseInterface
     {
-        $response = new Response();
-        $response->getBody()->write($mensaje);
-        return $response->withStatus($status);
+        return new Response($status, $header, $mensaje);
     }
 
 

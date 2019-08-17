@@ -21,18 +21,7 @@ class Usuarios extends Model
         'id_role',
     ];
 
-    public static function login(array $data)
-    {
-        //$filter  = "/^[a-zA-Z0-9]*$/";
-        $usuario = self::where('correo', "=", $data['username'])
-            ->where('password', "=", $data['password'])
-            ->get();
-        if (sizeof($usuario) > 0) {
-            return $usuario;
-        } else {
-            return null;
-        }
-    }
+    
 
     public function register(array $datos)
     {

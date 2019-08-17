@@ -163,7 +163,7 @@ class StrategySiff extends AbstractStrategy implements ContainerAwareInterface
                         
                         return $exception->buildJsonResponse($response);
                     }
-
+                    
                     $response->getBody()->write($exception->getMessage());
 
                     $response = $response->withAddedHeader('content-type', 'text/html');

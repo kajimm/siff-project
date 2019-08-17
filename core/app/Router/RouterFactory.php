@@ -5,6 +5,7 @@ use Psr\Container\ContainerInterface;
 use \Core\Strategies\StrategySiff;
 use \Zend\Diactoros\ResponseFactory;
 use \League\Route\Router;
+use \League\Route\Strategy\ApplicationStrategy;
 
 /**
  * Description
@@ -29,7 +30,7 @@ class RouterFactory
     public function __invoke(ContainerInterface $container)
     {
         $responseFactory = new ResponseFactory;
-        $Strategy_custom = new StrategySiff($responseFactory);
+        $Strategy_custom = new ApplicationStrategy($responseFactory);
         $strategy        = ($Strategy_custom)->setContainer($container);
         $router          = (new Router)->setStrategy($strategy);
 
