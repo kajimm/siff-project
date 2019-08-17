@@ -8,6 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use \Core\Controller\Controller;
 use \Core\session\FlashMessage;
 use App\modules\Auth\authenticate\AccessInterface;
+use \Core\Session\SessionInterface as Session;
 
 /**
  *Controlador Inicio de sesion
@@ -17,6 +18,8 @@ class LoginController extends Controller {
 	private $render;
 	private $flash;
     private $auth;
+    private $session;
+    private $intentos = 0;
 
 	/**
 	 * [__construct description]
@@ -24,18 +27,32 @@ class LoginController extends Controller {
 	 * @param LogInterface      $log      [Registro de logs del sistema]
 	 * @param FlashMessage      $flash    [Mensajes flash]
 	 */
-	public function __construct(Render $renderer, FlashMessage $flash, AccessInterface $auth) {
+	public function __construct(Render $renderer, FlashMessage $flash, AccessInterface $auth, Session $session) {
 		$this->render = $renderer;
         $this->auth = $auth;
         $this->flash = $flash;
+        $this->session = $session;
 	}
 
+    /**
+     * [index]
+     * Render de aplicación
+     * @param  Request $request [peticion http]
+     * @return [type]           [ResponseInterface]
+     */
 	public function index(Request $request): ResponseInterface{
+        $key = $this->session->get('intentos');
 		$response = new Response();
-		$response->getBody()->write($this->render->render('ingreso/login', array()));
+		$response->getBody()->write($this->render->render('ingreso/login', array("intentos" => $key)));
 		return $response->withStatus(200);
 	}
 
+    /**
+     * [run]
+     * Iniciar session
+     * @param  Request $request [peticion http]
+     * @return [ResponseInterface]          
+     */
 	public function run(Request $request): ResponseInterface{
 
 		$data = $request->getParsedBody();
@@ -45,11 +62,17 @@ class LoginController extends Controller {
             $this->flash->error($login);
             return new Response(200, ['Location' => '/acceso/login'], '');
         }else if($login == true){
+
+            $this->session->delete('intentos');
             $this->flash->success('Session iniciada Bienvenido (a)');
             return new Response(200, ['Location' => '/admin/home'], '');
+
         }else{
+
             $this->flash->error('Credenciales incorectas');
+            $this->session->attemps('intentos', 1);
             return new Response(200, ['Location' => '/acceso/login'], '');
+
         }
 		
 	}

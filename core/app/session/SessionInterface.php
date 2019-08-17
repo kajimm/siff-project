@@ -29,7 +29,7 @@ interface SessionInterface
      * @param  [?null] $default [null]
      * @return [?array]          [array session ?? null ?? []]
      */
-    public function get(string $key, $default = null): ?array;
+    public function get(string $key, $default = null);
 
     /**
      * [delete elimina usa session por su identificador]

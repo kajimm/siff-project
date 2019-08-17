@@ -24,32 +24,32 @@
                         {{ csrf() }}
                         <div class="field">
                             <p class="control is-expanded">
-                                <input class="input" name="nombre" placeholder="Nombre" type="text"></input>
+                                <input class="input" name="nombre" value="tester" placeholder="Nombre" type="text"></input>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control is-expanded">
-                                <input class="input" name="apellido" placeholder="Apellido" type="text"></input>
+                                <input class="input" name="apellido" value="tester jose" placeholder="Apellido" type="text"></input>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control is-expanded">
-                                <input class="input" name="correo" placeholder="Correo" type="email"></input>
+                                <input class="input" name="correo" value="tester@tes.com" placeholder="Correo" type="email"></input>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control is-expanded">
-                                <input class="input" name="telefono" placeholder="Telefono" type="number"></input>
+                                <input class="input" name="telefono"  value="3012344567" placeholder="Telefono" type="number"></input>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control is-expanded">
-                                <input class="input" placeholder="Contraseña" type="password"></input>
+                                <input class="input" placeholder="Contraseña" value="123456789" type="password"></input>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control is-expanded">
-                                <input class="input" name="password" placeholder="Repetir Contraseña" type="password"></input>
+                                <input class="input" name="password" value="123456789" placeholder="Repetir Contraseña" type="password"></input>
                             </p>
                         </div>
 
@@ -79,6 +79,7 @@
                        <br>
                         <a href="{{ router('login') }}">Iniciar sesión</a>
                         {{ flash('error') }}
+                        {{ flash('warning') }}
                     </form>
                 </div>
             </div>
@@ -86,89 +87,3 @@
     </div>
 </section>
 {% endblock %}
-
-{##
-<!--
-
-<div class="container mx-auto py-10">
-    <div class="h-auto flex justify-center">
-        <form class="w-full max-w-lg" method="POST" action="{{ router(register) }}">
-            <h2 class="font-mono relative font-black text-gray-600 text-4xl pb-1">
-                Login
-            </h2>
-            <div class="flex flex-wrap -mx-3 mb-4">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre">
-                        Nombre
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="nombre" name="nombre" placeholder="Nombre" type="text">
-                    </input>
-                </div>
-                <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="apellido">
-                        Apellido
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="apellido" name="apellido" placeholder="Apellido" type="text">
-                    </input>
-                </div>
-                <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="correo">
-                        Correo
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="correo" name="email" placeholder="E-mail" type="email">
-                    </input>
-                </div>
-                <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono">
-                        Telefono
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="telefono" name="telefono" placeholder="Telefono" type="number">
-                    </input>
-                </div>
-            </div>
-           
-
-            <div class="flex flex-wrap -mx-3 mb-2">
-                <div class="w-full px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password1">
-                        Contraseña
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="password1" placeholder="******************" type="password">
-                    </input>
-                </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
-                        Confirmar contraseña
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="password" name="password" placeholder="******************" type="password">
-                        <p class="text-red-500 text-xs italic">
-                            Las contraseña no coinciden
-                        </p>
-                    </input>
-                </div>
-            </div>
-            {{ csrf() }}
-            <button class="bg-green-400 mt-3 hover:bg-green-500 text-white font-bold py-2 px-4 rounded" type="submit">
-                Registrarme
-            </button>
-            <button class="bg-red-500 mt-3 hover:bg-green-500 text-white font-bold py-2 px-4 rounded" type="reset">
-                Cancelar
-            </button>
-            <div class="mt-3">
-                <a class="mr-5 text-blue-300" href="{{ router(lossPass) }}">
-                    ¿Olvide mi contraseña?
-                </a>
-                <a class="text-blue-300" href="{{ router(login) }}">
-                    ¡Tengo una cuenta!
-                </a>
-            </div>
-            <br>
-                {{ flash(error) }}
-            </br>
-        </form>
-    </div>
-</div>
--->
-##}

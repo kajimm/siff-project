@@ -59,7 +59,7 @@ return [
 		get(\Core\Extension\TwigExtensionAssets::class),
 		get(\Core\Extension\TwigExtensionMessagueFlash::class),
 		get(\Core\Extension\TwigExtensionSession::class),
-		get(\Core\Extension\TwigExtensionCsrf::class),
+		get(\Core\Extension\TwigExtensionCsrf::class)
 	],
 	RouteCollectionInterface::class => factory(RouterFactory::class),
 	RendererInterface::class => factory(RenderFactory::class),

@@ -30,6 +30,8 @@ class Session implements SessionInterface
      */
     private $cookie;
 
+    private $count = 1;
+
     /**
      * [start inicia session]
      * @return [void]
@@ -107,7 +109,7 @@ class Session implements SessionInterface
      * @param  [type] $default [null || valor que se le asigne]
      * @return [array]          [array || null]
      */
-    public function get(string $key, $default = null):  ? array
+    public function get(string $key, $default = null)
     {
         $this->start();
         if (array_key_exists($key, $_SESSION)) {
@@ -139,6 +141,20 @@ class Session implements SessionInterface
     {
         $_SESSION[$key] = $val;
     }
+
+    /**
+     * [intentos intentos de session]
+     * @return [type] [description]
+     */
+    public function attemps(string $key, $value): void{
+        $this->start();
+        if(null === $this->get('intentos')){
+            $_SESSION[$key] = $value;
+        }else{
+            $_SESSION[$key] = $_SESSION[$key] + $value;
+        }
+    }
+
 
     /**
      * [delete description]

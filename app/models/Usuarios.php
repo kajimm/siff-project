@@ -20,26 +20,4 @@ class Usuarios extends Model
         'updated_at',
         'id_role',
     ];
-
-    
-
-    public function register(array $datos)
-    {
-
-        $validar = self::where('correo', "=", $datos['correo'])->get();
-
-        if(sizeof($validar) > 0)
-        {
-            return null;
-        }else{
-            self::create($datos);
-            return true;
-        }
-    }
-    public function lostPassword()
-    {
-
-    }
-
-
 }
