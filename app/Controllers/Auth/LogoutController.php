@@ -3,27 +3,20 @@ namespace App\Controllers\Auth;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response\RedirectResponse;
-use \Core\Log\LogInterface;
-use \Core\session\SessionInterface;
-
+use App\modules\Auth\authenticate\AccessInterface;
+use GuzzleHttp\Psr7\Response;
 /**
  *
  */
 class LogoutController
 {
-    /**
-     * [$log description]
-     * @var [LogInterface]
-     */
-    private $log;
-    private $session;
-
-    public function __construct(LogInterface $log, SessionInterface $session)
-    {
-        $this->log     = $log;
-        $this->session = $session;
-    }
+    private $auth;
+    private $flash;
+   
+   function __construct(AccessInterface $auth)
+   {
+       $this->auth = $auth;
+   }
     /**
      * [__invoke description]
      * Cerrar session
@@ -32,15 +25,10 @@ class LogoutController
      */
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
-        if ($this->session->get('user')) {
-            $this->log->newLog('NOTICE');
-            $this->log->rewriteChanel('sessiones');
-            $this->log->registrar(
-                'Session finalizada:: METODO:: {' . $request->getMethod() . '}{ URL:: ' . $request->getUri() . '}{ PROTOCOLO:: ' . $request->getProtocolVersion() . ' }',
-                array('Usuario' => $this->session->get('user')['nombre']));
+        if($this->auth->logout()){
+            return new Response(200, ['Location' => '/acceso/login']);
+        }else{
+            return new Response(200, ['Location' => '/acceso/login']);
         }
-        $this->session->delCookie();
-        $this->session->destroy();
-        return new RedirectResponse('/acceso/login', 200);
     }
 }

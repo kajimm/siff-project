@@ -163,6 +163,11 @@ class Session implements SessionInterface
         $this->regenerate();
         session_unset();
         session_destroy();
+        foreach (glob("core/app/session/storage/__blaze_session*") as $key) {
+            if (false === filesize($key)) {
+                @unlink($key);
+            }
+        }
     }
 
     /**

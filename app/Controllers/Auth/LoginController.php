@@ -2,16 +2,11 @@
 namespace App\Controllers\Auth;
 
 use Core\Render\RendererInterface as Render;
-use Core\session\SessionInterface;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response\RedirectResponse;
-use \App\models\Usuarios;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use \Core\Controller\Controller;
-use \Core\Log\LogInterface;
 use \Core\session\FlashMessage;
-use \Core\Validate\ValidateInterface;
 use App\modules\Auth\authenticate\AccessInterface;
 
 /**
@@ -35,13 +30,13 @@ class LoginController extends Controller {
         $this->flash = $flash;
 	}
 
-	public function index(ServerRequestInterface $request): ResponseInterface{
+	public function index(Request $request): ResponseInterface{
 		$response = new Response();
 		$response->getBody()->write($this->render->render('ingreso/login', array()));
 		return $response->withStatus(200);
 	}
 
-	public function run(ServerRequestInterface $request): ResponseInterface{
+	public function run(Request $request): ResponseInterface{
 
 		$data = $request->getParsedBody();
         $login = $this->auth->login($data);
