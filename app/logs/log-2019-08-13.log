@@ -1,3 +1,8 @@
 [2019-08-13 12:13:07] Session.INFO: Session iniciada {"usuario":"admin"} []
 [2019-08-13 12:13:10] sessiones.NOTICE: Session finalizada:: METODO:: {POST}{ URL:: http://localhost:8080/acceso/logout}{ PROTOCOLO:: 1.1 } {"Usuario":"admin"} []
 [2019-08-13 13:49:08] Session.INFO: Session iniciada {"usuario":"admin"} []
+[2019-08-13 14:56:50] Session.INFO: Session iniciada {"usuario":"root"} []
+[2019-08-13 14:57:37] sessiones.NOTICE: Session finalizada:: METODO:: {POST}{ URL:: http://localhost:8080/acceso/logout}{ PROTOCOLO:: 1.1 } {"Usuario":"root"} []
+[2019-08-13 15:02:01] Session.INFO: Session iniciada {"usuario":"root"} []
+[2019-08-13 21:19:54] Session.INFO: Session iniciada {"usuario":"root"} []
+[2019-08-13 22:04:23] sessiones.NOTICE: Session finalizada:: METODO:: {POST}{ URL:: http://localhost:8080/acceso/logout}{ PROTOCOLO:: 1.1 } {"Usuario":"root"} []

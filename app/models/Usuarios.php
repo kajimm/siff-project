@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usuarios extends Model
 {
     protected $table = "usuarios";
+    protected $dateFormat = 'Y-m-d H:i:s';
 
     protected $fillable = [
         'id_usuario,',
@@ -31,7 +32,6 @@ class Usuarios extends Model
         } else {
             return null;
         }
-
     }
 
     public function register(array $datos)
@@ -47,9 +47,10 @@ class Usuarios extends Model
             return true;
         }
     }
-
     public function lostPassword()
     {
 
     }
+
+
 }

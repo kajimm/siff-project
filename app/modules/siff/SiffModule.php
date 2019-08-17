@@ -25,8 +25,9 @@ class SiffModule extends Module
             $route->map('GET', '/home', \App\Controllers\HomeController::class)->setName('home');
             $route->map('GET', '/usuarios', ['\App\Controllers\UsersController', 'index'])->setName('usuarios');
             $route->map('GET', '/usuarios/get', ['\App\Controllers\UsersController', 'users']);
+            $route->map('GET', '/usuarios/view/{id}', ['\App\Controllers\UsersController', 'details'])->setName('viewUser');
             
         
-        })->middleware(new \App\middleware\AuthMiddleware);
+        })->middleware(new \App\middleware\NotSessionMiddleware);
     }
 }

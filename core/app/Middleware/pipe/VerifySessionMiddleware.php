@@ -26,7 +26,11 @@ class VerifySessionMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $clave = hash('sha256', $_SERVER['HTTP_USER_AGENT']);
+
+        if(PHP_SAPI === "cli"){
+            return $handler->handle($request);
+        }else{
+            $clave = hash('sha256', $_SERVER['HTTP_USER_AGENT']);
         if (!empty($this->session->get('user'))) {
             $user = $this->session->get('user');
             if ($user['id'] === $clave) {
@@ -36,6 +40,7 @@ class VerifySessionMiddleware implements MiddlewareInterface
             }
         } else {
             return $handler->handle($request);
+        }
         }
     }
 }

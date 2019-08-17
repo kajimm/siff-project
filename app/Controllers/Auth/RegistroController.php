@@ -21,7 +21,6 @@ class RegistroController extends Controller
     private $log;
     private $flash;
     private $validar;
-    private $keep;
 
     public function __construct(Render $renderer, LogInterface $log, FlashMessage $flash, Valid $validar)
     {
@@ -29,7 +28,7 @@ class RegistroController extends Controller
         $this->log    = $log;
         $this->flash = $flash;
         $this->validar = $validar;
-        $this->keep = $keep;
+        
     }
 
     public function index(Request $request): Response

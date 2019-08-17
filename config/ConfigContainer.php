@@ -72,5 +72,5 @@ return [
     \Core\Middleware\pipe\HttpMiddleware::class          => autowire(),
     \Core\Middleware\pipe\CsrfMiddleware::class          => autowire()->constructor(get(SessionInterface::class)),
     \Core\Middleware\pipe\VerifySessionMiddleware::class => autowire()->constructor(get(SessionInterface::class), get('session_key')),
-    \Core\Middleware\pipe\InactivityMiddleware::class    => autowire()->constructor(get(SessionInterface::class)),
+    \Core\Middleware\pipe\InactivityMiddleware::class    => autowire()->constructor(get(SessionInterface::class))
 ];

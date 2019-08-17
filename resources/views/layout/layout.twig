@@ -7,7 +7,8 @@
                     {% block title %}{% endblock %}
                 </title>
                 <link href="{{ assets('css/bulma.min.css') }}" rel="stylesheet"/>
-                <script src="https://kit.fontawesome.com/333886c618.js"></script>
+               <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
                 {% block style %}
 
                 {% endblock %}
@@ -19,7 +20,7 @@
             <nav aria-label="main navigation" class="navbar" role="navigation">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="{{ router('home') }}">
-                        <img height="40" src="../favicon.png" width="112">
+                        <img height="40" src="{{ public('favicon.png') }}" width="112">
                         </img>
                     </a>
                     <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navbarBasicExample" role="button">

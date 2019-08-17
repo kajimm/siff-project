@@ -1,0 +1,119 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}
+	{{ 'Detalles de usuario' }}
+{% endblock %}
+
+{% block body %}
+
+		   
+				
+
+
+      <div class="columns">
+      	<!--Inicio formulario de edicion-->
+      	<div class="column is-6">
+				<h1 class="title">Editar usuario</h1>
+      		<form action="" method="POST" autocomplete="off">
+      			{% for item in detail %}
+				<div class="control">
+				  <input class="input is-hovered" value="{{ item.nombre }}" type="text">
+				</div>
+				<div class="control" style="margin-top: 5px;">
+					<div class="clearfix"></div>
+				  <input class="input is-hovered" value="{{ item.apellido }}" type="text">
+				</div>
+				<div class="control" style="margin-top: 5px;">
+				  <input class="input is-hovered" value="{{ item.correo }}" type="text">
+				</div>
+				<div class="control" style="margin-top: 5px;">
+				  <input class="input is-hovered" value="{{ item.telefono }}" type="number">
+				</div>
+				<div class="control" style="margin-top: 5px;">
+				  {% if item.id_role == 1 %}
+						<input class="input is-hovered" value="Admimistrador" type="text">
+				  {% elseif item.id_role == 2 %}
+						<input class="input is-hovered" value="Gestores" type="text">
+				  {% elseif item.id_role == 3 %}
+						<input class="input is-hovered" value="Auditores" type="text"
+				  {% elseif item.id_role == 3 %}
+						<input class="input is-hovered" value="Basico" type="text"
+				  {% endif %}
+				</div>
+      			{% endfor %}
+      			<button class="button is-primary" style="margin-top: 5px;">Editar</button>
+      			<button class="button is-danger" value="DELETE" style="margin-top: 5px;">Eliminar</button>
+      		</form>	
+      	</div>
+      	<!--Fin formulario de edicion-->
+		
+		<!--Fin formulario Roles y permisos-->
+		<div class="column is-6">
+			<h1 class="title">Roles y permisos</h1>
+			<div class="table-container" style="overflow-x: auto;">
+			<table class="table is-fullwidth is-scrollable" >
+				<thead>
+					<th>Modulo</th>
+					<th>Permiso</th>
+				</thead>
+				<tbody>
+			
+					{% for rol in join %}
+						<tr>
+							<td>{{ rol.Modulo }}</td>
+							<td>
+								<label class="checkbox">
+								  <input type="checkbox" value="{{ rol.Accion }}" checked>
+								  <span class="tag is-light">{{ rol.Accion }}</span>
+								</label>
+							</td>
+						</tr>		
+					{% endfor %}
+			
+				</tbody>				
+			</table>
+		</div>
+		</div>
+      </div>
+		
+		<div class="columns">
+		<div class="column is-6">
+      		<h1 class="title">Procesos</h1>
+			<nav class="level">
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Ordenes de compra</p>
+			      <p class="title">35</p>
+			    </div>
+			  </div>
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Revisiones</p>
+			      <p class="title">123</p>
+			    </div>
+			  </div>
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Auditorias</p>
+			      <p class="title">456K</p>
+			    </div>
+			  </div>
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Sanciones</p>
+			      <p class="title">789</p>
+			    </div>
+			  </div>
+			</nav>
+
+      	</div>
+
+      	<div class="column is-6">
+
+      	</div>
+		</div>
+    
+ 
+
+
+{% endblock %}

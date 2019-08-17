@@ -11,12 +11,14 @@ use \Core\Log\LogInterface;
 use \Core\session\FlashMessage;
 use \Core\Validate\ValidateInterface;
 use \App\models\Usuarios;
+use \Core\Controller\Controller;
+use \Core\Middleware\Middleware;
 
 
 /**
  *Controlador Inicio de sesion
  */
-class LoginController
+class LoginController extends Controller
 {
     private $render;
     private $log;
@@ -47,7 +49,14 @@ class LoginController
     }
 
     public function run(ServerRequestInterface $request): ResponseInterface
-    {
+    {     
+        
+        $this->middleware($request, new \App\middleware\AuthMiddleware);
+        
+        exit();
+
+
+
 
         $data = $request->getParsedBody();
 

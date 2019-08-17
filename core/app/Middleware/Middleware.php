@@ -11,6 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 /**
  * Clase encargada de ejetutar los middlewares del sistema
  * Methodos que se registran en index-app.php
+ * Core\Middleware\Middleware;
  */
 
 class Middleware implements RequestHandlerInterface

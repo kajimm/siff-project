@@ -18,6 +18,7 @@ class TwigExtensionAssets extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('assets', [$this, 'assets']),
+            new \Twig_SimpleFunction('public', [$this, 'icon']),
         ];
     }
     /**
@@ -29,6 +30,19 @@ class TwigExtensionAssets extends \Twig_Extension
     public function assets(string $file): string
     {
         $ruta = 'http://localhost:8080/assets/'.$file;
+        return $ruta;
+    }
+
+    /**
+     * [icon]
+     * Funcion que permite cargar directamente desde la carpeta publica del proyecto
+     * Es util para englovar las imagenes o iconos que se usan en el proyecto
+     * @param  string $file [Ruta del archivo que se desea cargar]
+     * @return [type]       [description]
+     */
+    public function icon(string $file): string
+    {
+        $ruta = 'http://localhost:8080/'.$file;
         return $ruta;
     }
 }

@@ -33,7 +33,7 @@ return [
         'development'      => [
             'adapter' => 'mysql',
             'host'    => 'localhost',
-            'name'    => 'SIFF',
+            'name'    => 'SIFF_PROJECT',
             'user'    => 'root',
             'pass'    => 'root',
             'port'    => '3306',
