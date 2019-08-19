@@ -26,7 +26,12 @@ class Capcha
 	 */
 	public function check(string $code)
 	{
-		$url = "https://www.google.com/recaptcha/api/siteverify?secret={$this->clave}&response={$code}";
+		$parametros = [
+			"secret"   => $this->clave,
+			"response" => $code
+		];
+		
+		$url = "https://www.google.com/recaptcha/api/siteverify?".http_build_query($parametros);
 		
 		if(function_exists('curl_version')){
 			$init = curl_init($url);

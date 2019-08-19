@@ -14,10 +14,6 @@ use \Core\Middleware\pipe\InactivityMiddleware;
 use \Core\Middleware\pipe\RouterMiddleware;
 use \Core\Middleware\pipe\SlashesMiddleware;
 use \Core\Middleware\pipe\VerifySessionMiddleware;
-
-
-
-
 /**
  * Conection uso del ORM eloquent
  */
