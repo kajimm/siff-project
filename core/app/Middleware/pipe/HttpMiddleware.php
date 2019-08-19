@@ -27,7 +27,6 @@ class HttpMiddleware implements MiddlewareInterface
         $method = $request->getParsedBody();
         if (array_key_exists('_method', $method) && in_array($method['_method'], ['POST', 'PUT'])) {
             $request = $request->withMethod($method['_method']);
-            print_r($request);
             return $request;
         }
         return $handler->handle($request);

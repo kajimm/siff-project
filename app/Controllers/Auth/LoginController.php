@@ -9,6 +9,7 @@ use \Core\Controller\Controller;
 use \Core\session\FlashMessage;
 use App\modules\Auth\authenticate\AccessInterface;
 use \Core\Session\SessionInterface as Session;
+use Core\Capcha\Capcha;
 
 /**
  *Controlador Inicio de sesion
@@ -19,7 +20,7 @@ class LoginController extends Controller {
 	private $flash;
     private $auth;
     private $session;
-    private $intentos = 0;
+    private $capcha;
 
 	/**
 	 * [__construct description]
@@ -27,11 +28,12 @@ class LoginController extends Controller {
 	 * @param LogInterface      $log      [Registro de logs del sistema]
 	 * @param FlashMessage      $flash    [Mensajes flash]
 	 */
-	public function __construct(Render $renderer, FlashMessage $flash, AccessInterface $auth, Session $session) {
+	public function __construct(Render $renderer, FlashMessage $flash, AccessInterface $auth, Session $session, Capcha $capcha) {
 		$this->render = $renderer;
         $this->auth = $auth;
         $this->flash = $flash;
         $this->session = $session;
+        $this->capcha = $capcha;
 	}
 
     /**
@@ -56,6 +58,23 @@ class LoginController extends Controller {
 	public function run(Request $request): ResponseInterface{
 
 		$data = $request->getParsedBody();
+
+        if(array_key_exists('g-recaptcha-response', $data)){
+            
+            $resultado = $this->capcha->check($data['g-recaptcha-response']);
+
+            if(!$resultado){
+                $this->flash->error('El capcha no se pudo validar intenta nuevamente');
+                return new Response(200, ['Location' => '/acceso/login'], '');
+            }
+            $this->session->delete('intentos');
+        }
+
+        /**
+         *        ||
+         *       \  /
+         */
+
         $login = $this->auth->login($data);
 
         if(is_string($login)){

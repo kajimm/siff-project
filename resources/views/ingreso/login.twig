@@ -47,13 +47,17 @@
                             <button class="button is-block is-primary is-fullwidth" type="submit">
                                 Iniciar
                             </button>
+                            {% if intentos == 5 %}
+                                <br>
+                                <center>
+                                    <div class="g-recaptcha" id="capcha" data-sitekey="6LcCl7MUAAAAALWQpo3SQ9Q2g95JBCXyCGkHEM73"></div>        
+                                </center>
+                            {% endif %}
                         </form>
                     </div>
                     {{ flash('error') }}
                     {{ flash('success') }}
                     {{ flash('warning') }}
-                    {{ intentos }}
-                  
                     <p class="has-text-grey">
                         <a class="is-pulled-left" href="{{ router('registro') }}">
                             Registrarme
@@ -66,4 +70,19 @@
             </div>
         </div>
     </section>
+    {% endblock %}
+
+    {% block script %}
+        
+        {% if intentos == 5 %}
+            <script type="text/javascript">
+                  var onloadCallback = function() {
+                    grecaptcha.render('capcha', {
+                      'sitekey' : '6LcCl7MUAAAAALWQpo3SQ9Q2g95JBCXyCGkHEM73'
+                    });
+                  };
+            </script>
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+        {% endif %}
+
     {% endblock %}
